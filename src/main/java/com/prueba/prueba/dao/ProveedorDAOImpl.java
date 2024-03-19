@@ -18,7 +18,7 @@ public class ProveedorDAOImpl implements ProveedorDAO{
 
     @Override
     public List<ProveedorModel> getProveedores() {
-        String query = "FROM proveedores";
+        String query = "FROM wea";
         return entityManager.createQuery(query).getResultList();
     }
 }

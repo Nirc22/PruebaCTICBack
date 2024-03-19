@@ -21,3 +21,11 @@
       FOREIGN KEY (`idcategoria`) REFERENCES `categorias` (`idcategoria`),
       FOREIGN KEY (`idproveedor`) REFERENCES `proveedores` (`idproveedor`)
     )ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+    CREATE TABLE IF NOT EXISTS `administradores` (
+      `nmid` int NOT NULL AUTO_INCREMENT,
+      `dsnombre` varchar(100) NOT NULL,
+      `email` varchar(100) NOT NULL,
+      `password` varchar(100) NOT NULL,
+      PRIMARY KEY (`nmid`)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;

@@ -1,11 +1,10 @@
 package com.prueba.prueba.controllers;
 
+import com.prueba.prueba.Repository.ProveedorRepository;
 import com.prueba.prueba.dao.ProveedorDAO;
 import com.prueba.prueba.models.ProveedorModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +14,24 @@ public class ProveedorController {
     @Autowired
     private ProveedorDAO proveedorDAO;
 
-    @RequestMapping(value = "api/getProveedores", method = RequestMethod.GET)
+    @Autowired
+    private ProveedorRepository proveedorRepository;
+
+    /*@RequestMapping(value = "api/getProveedores", method = RequestMethod.GET)
     public List<ProveedorModel> getProveedores(){
         return proveedorDAO.getProveedores();
+    }*/
+
+    @GetMapping("api/getProveedores")
+    public List<ProveedorModel> getProveedor(){
+        return proveedorRepository.findAll();
     }
+
+    @PostMapping("api/crearProveedor")
+    public String crearProveedor(@RequestBody ProveedorModel proveedorModel){
+        proveedorRepository.save(proveedorModel);
+        return "Grabado";
+    }
+
+
 }
