@@ -42,16 +42,20 @@ public class CategoriaController {
     }
 
     @PutMapping("api/actualizarCategoria/{id}")
-    public String actualizarCategoria(@PathVariable Long id, @RequestBody CategoriaModel categoriaModel){
+    public void actualizarCategoria(@PathVariable Long id, @RequestBody CategoriaModel categoriaModel){
         CategoriaModel updateCategoriaModel = categoriaRepository.findById(id).get();
         updateCategoriaModel.setNombre(categoriaModel.getNombre());
         categoriaRepository.save(updateCategoriaModel);
-        return "Editado";
     }
 
     @DeleteMapping("api/eliminarCategoria/{id}")
     public void eliminarCategoria(@PathVariable Long id){
         CategoriaModel deleteCategoriaModel = categoriaRepository.findById(id).get();
         categoriaRepository.delete(deleteCategoriaModel);
+    }
+
+    @GetMapping("api/getCategoriaById/{id}")
+    public CategoriaModel getById(@PathVariable Long id){
+        return categoriaRepository.findById(id).get();
     }
 }

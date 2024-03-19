@@ -30,14 +30,15 @@ public class WebSecurityConfig {
         return http
                 .cors()
                 .and()
-                .csrf().disable()
+                .csrf()
+                .disable()
                 .authorizeHttpRequests()
-                //.requestMatchers("/api")
-                //.permitAll()
+                .requestMatchers("/api")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
-                //.and()
-                //.httpBasic()
+                .and()
+                .httpBasic()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -70,8 +71,8 @@ public class WebSecurityConfig {
     PasswordEncoder passwordEncoder () {
         return new BCryptPasswordEncoder();}
 
-    /* se usa para encriptar la contraseña del administrador*/
-    /*public static void main(String[] args){
+/* se usa para encriptar la contraseña del administrador
+    public static void main(String[] args){
         System.out.println("pass "+ new BCryptPasswordEncoder().encode("123456"));
     }*/
 }

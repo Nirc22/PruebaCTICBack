@@ -22,9 +22,8 @@ public class ProductoController {
     }
 
     @PostMapping("api/crearProducto")
-    public String crearProducto(@RequestBody ProductosModel productosModel){
+    public void crearProducto(@RequestBody ProductosModel productosModel){
         productoRepository.save(productosModel);
-        return "Grabado";
     }
 
     @PutMapping("api/actualizarProducto/{id}")
@@ -41,5 +40,10 @@ public class ProductoController {
     public void eliminarProducto(@PathVariable Long id){
         ProductosModel deleteProductoModel = productoRepository.findById(id).get();
         productoRepository.delete(deleteProductoModel);
+    }
+
+    @GetMapping("api/getProductoById/{id}")
+    public ProductosModel getById(@PathVariable Long id){
+        return productoRepository.findById(id).get();
     }
 }

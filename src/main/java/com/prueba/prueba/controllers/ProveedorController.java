@@ -3,6 +3,7 @@ package com.prueba.prueba.controllers;
 import com.prueba.prueba.Repository.ProveedorRepository;
 import com.prueba.prueba.dao.ProveedorDAO;
 import com.prueba.prueba.models.CategoriaModel;
+import com.prueba.prueba.models.ProductosModel;
 import com.prueba.prueba.models.ProveedorModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -48,5 +49,8 @@ public class ProveedorController {
         proveedorRepository.delete(deleteProveedorModel);
     }
 
-
+    @GetMapping("api/getProveedorById/{id}")
+    public ProveedorModel getById(@PathVariable Long id){
+        return proveedorRepository.findById(id).get();
+    }
 }
