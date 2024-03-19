@@ -1,9 +1,11 @@
 package com.prueba.prueba.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "productos")
 public class ProductosModel {
